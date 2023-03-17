@@ -7,9 +7,9 @@ import javax.persistence.Id;
 public class Topic {
 
     @Id
-    private String id;
-    private String name;
-    private String description;
+    public String id;
+    public String name;
+    public String description;
 
     public Topic(String id, String name, String description) {
         this.id = id;
@@ -44,4 +44,5 @@ public class Topic {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

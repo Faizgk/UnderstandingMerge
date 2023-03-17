@@ -24,6 +24,8 @@ public class TopicService {
             topicRepository.findAll().forEach(topics::add);
             return topics;
         }
+
+
         public Optional<Topic> getTopic(String id){
 
 /*    try{
@@ -61,4 +63,5 @@ public class TopicService {
             //topics.removeIf(t -> t.getId().equals(id));
             topicRepository.deleteById(id);
         }
+
 }
