@@ -3,6 +3,7 @@ package com.highpeak.spring.springboot;
 import com.highpeak.spring.springboot.topics.Topic;
 import com.highpeak.spring.springboot.topics.TopicRepository;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.highpeak.spring.springboot.topics.TopicService;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.Mockito.*;
 
 
@@ -29,6 +31,7 @@ class SpringbootApplicationTests {
 
 	@InjectMocks
 	TopicService topicService;
+
 
 	@BeforeEach
 	void setUp() {
@@ -44,6 +47,7 @@ class SpringbootApplicationTests {
 		assertEquals(2, topicService.getAllTopics().size());
 
 	}
+
 
 	@Test
 	public void getAllTopicsTest2(){
@@ -63,6 +67,14 @@ class SpringbootApplicationTests {
 		when(topicRepository.findById("002")).thenReturn(Optional.of(topic));
 
 		assertEquals(Optional.of(topic), topicService.getTopic("002"));
+	}
+
+	@Test
+	public void getTopicTest2(){
+
+		Topic topic = new Topic("002","sprinboot", "springbootlearn");
+		when(topicRepository.findById("002")).thenReturn(Optional.of(topic));
+		assertInstanceOf(Topic.class,topic );
 	}
 
 
