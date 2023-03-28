@@ -1,5 +1,8 @@
 package com.highpeak.spring.springboot;
 
+import com.highpeak.spring.springboot.courses.Course;
+import com.highpeak.spring.springboot.courses.CourseRepository;
+import com.highpeak.spring.springboot.courses.CourseService;
 import com.highpeak.spring.springboot.topics.Topic;
 import com.highpeak.spring.springboot.topics.TopicRepository;
 
@@ -11,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,9 +28,16 @@ class SpringbootApplicationTests {
 
 	@Mock
 	 TopicRepository topicRepository;
-
 	@InjectMocks
 	TopicService topicService;
+
+	@Mock
+	CourseRepository courseRepository;
+	@InjectMocks
+	CourseService courseService;
+
+
+
 
 
 	@BeforeEach
@@ -126,5 +137,13 @@ class SpringbootApplicationTests {
 		verify(topicRepository, times(2)).save(topic);
 	}
 
+	@Test
+	public void addCourses(){
+
+
+		when(courseRepository.findByTopicId("java")).thenReturn((List<Course>) Stream.of(new Course("Java", "Java Streams", "java Streams Learn", "Java")).collect(Collectors.toList()));
+		assertEquals(1, courseService.getAllCourses("java").size());
+
+	}
 
 }
