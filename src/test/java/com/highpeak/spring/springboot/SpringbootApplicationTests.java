@@ -3,17 +3,13 @@ package com.highpeak.spring.springboot;
 import com.highpeak.spring.springboot.topics.Topic;
 import com.highpeak.spring.springboot.topics.TopicRepository;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.highpeak.spring.springboot.topics.TopicService;
 
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-
 
 import java.util.Optional;
 import java.util.stream.Collectors;

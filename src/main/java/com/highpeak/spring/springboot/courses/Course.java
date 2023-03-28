@@ -1,25 +1,40 @@
-package com.highpeak.spring.springboot.topics;
+package com.highpeak.spring.springboot.courses;
+
+import com.highpeak.spring.springboot.topics.Topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Topic {
+public class Course {
 
     @Id
     public String id;
     public String name;
     public String description;
 
+    @ManyToOne
+    private Topic topic;
 
-    public Topic(String id, String name, String description) {
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+
+
+    public Course(String id, String name, String description, String topicId) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.topic = new Topic(topicId,"", "");
     }
 
-    public Topic() {
+    public Course() {
         super();
     }
 
@@ -46,5 +61,6 @@ public class Topic {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
 }
